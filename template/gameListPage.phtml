@@ -1,0 +1,41 @@
+<h3>Liste des jeux</h3>
+<ul>
+
+    <?php foreach ($Games as $Game) : ?>
+        <ul>
+            <li>
+                <a href="?page=gamePage&id=<?= htmlentities($Game->getId()) ?>">
+                    <?= htmlentities($Game->getGameName()) ?>
+                </a>
+            </li>
+            <br>
+
+            <!-- <li>
+                <?= htmlentities($Game->getCreatedAt()) ?>
+            </li>
+            <br> -->
+
+
+
+            <li>
+                <?= htmlentities($Game->getContent()) ?>
+            </li>
+            <br>
+
+            <li>
+                <?= htmlentities($Game->getCategory()) ?>
+            </li>
+            <br>
+
+            <button type="button" >
+            <a href="<?= htmlentities($Game->getLink()) ?>" target="_blank">
+                jouer
+            </a>
+            </button>
+            <br>
+            </li>
+
+        </ul>
+        <br><br>
+    <?php endforeach; ?>
+</ul>a

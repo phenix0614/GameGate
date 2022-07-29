@@ -1,5 +1,6 @@
 <?php
 require './Model/GameManager.php';
+require './Model/CommentManager.php';
 
 class GameController
 
@@ -48,9 +49,21 @@ class GameController
     {
 
         $manager = new GameManager();
-        $Game = $manager->findById( $_GET['id']);
+        $comentManager = new CommentManager();
+        $Game = $manager->findById($_GET['id']);
+
+        if (isset($_POST['comment'])) {
+            $CommentRegister = new Comment();
+            $CommentRegister->setComment($_POST['comment']);
+            $CommentRegister->setidGameCom($_GET['id']);
+            $CommentRegister->setidUserCom($_SESSION['user_id']);
+            // $CommentRegister->setCreatedAt($_SESSION['user_id']);
+
+            $CommentRegister = $comentManager->publish($CommentRegister);
+        }
+        $tabComment = $comentManager->findAll();
+
         $template = './template/gamePage.phtml';
         require 'view/layout.phtml';
     }
-
 }

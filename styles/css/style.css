@@ -1,6 +1,8 @@
 #home {
   display: flex;
   flex-direction: column;
+  background-image: url(../image/logo.jpg);
+  background-repeat: round;
 }
 
 #homeTitle {
@@ -10,13 +12,29 @@
 }
 
 h1 {
-  size: 200px;
+  size: 400px;
   color: red;
+}
+
+p {
+  color: white;
+  size: 200px;
 }
 
 footer {
   border: 1px solid black;
   background-color: #e0dbdb;
+}
+
+table,
+td {
+  border: 1px solid #333;
+}
+
+thead,
+tfoot {
+  background-color: #333;
+  color: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */

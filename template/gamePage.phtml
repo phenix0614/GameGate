@@ -1,13 +1,47 @@
-<h3><?= $Game->getGameName()?></h3>
- hello world
+<h3><?= $Game->getGameName() ?></h3>
 <ul>
     <li>
-        <?=$Game->getCategory()?>
+        <?= $Game->getCategory() ?>
     </li>
     <li>
-        <?= $Game->getContent()?>
+        <?= $Game->getContent() ?>
     </li>
-    <li>
-        <?= $Game->getLink()?>
-    </li>
+    <button type="button">
+        <a href="<?= htmlentities($Game->getLink()) ?>" target="_blank">
+            jouer
+        </a>
+    </button>
 </ul>
+<form action="" method="post">
+    <label for="comment">laisser votre commentaire sur le jeu </label>
+    <textarea name="comment" id="" cols="60" rows="8"></textarea>
+    <button type="submit" href="?page=gamePage&id=<?= htmlentities($Game->getId()) ?>"  >Publier</button>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <th colspan="2">Comentaires des utilisateurs</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <!-- <td>Commenter par:</td> -->
+            <td>commentaires </td>
+            <!-- <td>date du commentaire </td> -->
+
+        </tr>
+        <?php foreach ($tabComment as $comment) : ?>
+            <tr>
+            <td><?= htmlentities($comment->getComment()) ?></td>
+            <!-- <td><?= htmlentities($comment->getCreatedAt()) ?></td> -->
+            </tr>
+        <?php endforeach; ?>
+
+
+    </tbody>
+</table>
+
+
+
+<!-- on boucle ds la able des commentaire pour faire resortir tous les comme  -->

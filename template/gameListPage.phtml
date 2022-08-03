@@ -1,6 +1,6 @@
 <h3>Liste des jeux</h3>
-<ul>
 
+<ul>
     <?php foreach ($Games as $Game) : ?>
         <ul>
             <li>
@@ -9,14 +9,6 @@
                 </a>
             </li>
             <br>
-
-            <!-- <li>
-                <?= htmlentities($Game->getCreatedAt()) ?>
-            </li>
-            <br> -->
-
-
-
             <li>
                 <?= htmlentities($Game->getContent()) ?>
             </li>
@@ -29,4 +21,4 @@
         </ul>
         <br><br>
     <?php endforeach; ?>
-</ul>a
+</ul>

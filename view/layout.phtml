@@ -30,7 +30,7 @@
                         </li>
 
                         </li>
-                        <?php if ($_SESSION['user_status'] === 'Createur de contenu') : ?>
+                        <?php if ($_SESSION['user_status'] === 'Createur de contenu' || $_SESSION['user_status'] === 'admin') : ?>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="?page=gameAdd">Ajouter votre jeu </a>
                             </li>

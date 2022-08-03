@@ -9,7 +9,6 @@ class UserController
 {
     public function register(): void
     {
-        $errors = [];
 
         $success = 'Votre profile a bien été creer';
         $Manager = new UserManager();
@@ -20,41 +19,43 @@ class UserController
         ) {
             if ($Manager->emailVerify($_POST['email']) === TRUE) {
                 echo "<script>alert(\"Le mail existe deja, veuillez en choisir un autre\")</script>";
-                // echo 'Le mail existe deja, veuillez en choisir un autre';
                 header("Refresh: 1");
                 exit();
             }
 
             if ($_POST['password1'] === $_POST['password2'] && $Manager->emailVerify($_POST['email']) === false) {
 
-                // date_default_timezone_set('Europe/Paris');
-
-                // $date= new datetime() ;
-
                 $User = new Users();
                 $User->setFirstName($_POST['firstName']);
                 $User->setLastName($_POST['lastName']);
                 $User->setEmail($_POST['email']);
-                // $User->setCreatedAt( $date);
                 $User->setUserStatus($_POST['status']);
                 $User->setCtrPassword($_POST['password1']);
                 $User->setPassword(
                     password_hash($_POST['password1'], PASSWORD_ARGON2ID)
                 );
 
-                $errors = $User->validPasswordEmail();
-                $User->erasePassword();
-                if (empty($errors)) {
-                    // $Manager = new UserManager();
+                $mailerror = $User->validEmail($User->getEmail());
+                if ($mailerror === false) {
+                    echo "<script>alert(\"Format email invalide.\")</script>";
+                }
+
+                $passwordError = $User->validPassword($User->getCtrPassword());
+                if ($passwordError === false) {
+                    echo "<script>alert(\"Le mot de passe ne peut pas avoir une taille inférieure à 8 caractères.\")</script>";
+                }
+
+
+                if ($mailerror === TRUE && $passwordError === TRUE) {
+                    $User->erasePassword();
                     $Manager->insert($User);
-                    echo $success;
-                    header("Refresh: 3; index.php");
+                    echo "<script>alert(\"Votre profile a bien été creer\")</script>";
+                    header("Refresh: 1; index.php");
                     exit;
-                } else {
-                    echo $errors;
                 }
             }
         }
+
         $template = './template/registerPage.phtml';
 
         require './view/layout.phtml';
@@ -70,9 +71,16 @@ class UserController
                 $authentifier = new Authentificator();
                 $authentifier->login($user->getId(), $user->getLastName(), $user->getUserStatus());
 
-                echo 'bonjour'.' '.$user->getLastName();
-                header('Refresh: 3 ; index.php');
+                echo 'bonjour' . ' ' . $user->getLastName();
+                header('Refresh: 2 ; index.php');
                 exit;
+            } else {
+                echo "<script>alert(\"Email ou mot de passe invalide\")</script>";
+                // header('Refresh: 1; index.php');
+
+                // exit;
+
+
             }
         }
 
@@ -91,8 +99,8 @@ class UserController
 
     public function viewUserPage(): void
     {
-        $Manager= new UserManager();
-        $User= $Manager->findById($_SESSION['user_id']);
+        $Manager = new UserManager();
+        $User = $Manager->findById($_SESSION['user_id']);
 
 
         $template = './template/userPage.phtml';

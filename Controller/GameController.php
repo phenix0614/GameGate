@@ -50,18 +50,21 @@ class GameController
 
         $manager = new GameManager();
         $comentManager = new CommentManager();
+
         $Game = $manager->findById($_GET['id']);
 
         if (isset($_POST['comment'])) {
             $CommentRegister = new Comment();
+            // $CommentRegister->setId($_GET['id']);
             $CommentRegister->setComment($_POST['comment']);
             $CommentRegister->setidGameCom($_GET['id']);
             $CommentRegister->setidUserCom($_SESSION['user_id']);
             // $CommentRegister->setCreatedAt($_SESSION['user_id']);
 
-            $CommentRegister = $comentManager->publish($CommentRegister);
+            $ComRegister = $comentManager->publish($CommentRegister);
         }
-        $tabComment = $comentManager->findAll();
+        $tabComment = $comentManager->findAllById($_GET['id']);
+
 
         $template = './template/gamePage.phtml';
         require 'view/layout.phtml';

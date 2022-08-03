@@ -61,26 +61,21 @@ class Comment
         return $this->idUserCom;
     }
 
-    public function setgameName(STRING $gameName): void
+    public function setGameName(STRING $gameName): void
     {
         $this->gameName = $gameName;
     }
-    public function getgameName(): STRING
+    public function getGameName(): STRING
     {
         return $this->gameName;
     }
 
-    public function setuserName(STRING $userName): void
+    public function setUserName(STRING $userName): void
     {
         $this->userName = $userName;
     }
-    public function getuserName(): STRING
+    public function getUserName(): STRING
     {
         return $this->userName;
     }
-
-
-
-
-    
 }

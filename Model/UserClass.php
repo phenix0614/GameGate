@@ -92,19 +92,15 @@ class Users
         return $this->userStatus;
     }
 
-    public function validPasswordEmail(): array
+    public function validEmail(STRING $email): bool
     {
-        $errors = [];
+        return (!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $email)) ? FALSE : TRUE;
+    }
 
-        if (strlen($this->ctrPassword) < 6) {
-            $errors['password'] = 'Le mot de passe ne peut pas avoir une taille inférieure à 6 caractères.';
-        }
 
-        if (preg_match('/.+@.+\..+/', $this->email) === 0) {
-            $errors['email'] = 'Format d\'email invalide.';
-        }
-
-        return $errors;
+    public function validPassword(STRING $ctrPassword): BOOL
+    {
+        return (strlen($ctrPassword) > 6) ? TRUE : FALSE;
     }
 
     public function erasePassword(): void

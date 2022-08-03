@@ -1,4 +1,5 @@
 <h3><?= $Game->getGameName() ?></h3>
+
 <ul>
     <li>
         <?= $Game->getCategory() ?>
@@ -15,7 +16,7 @@
 <form action="" method="post">
     <label for="comment">laisser votre commentaire sur le jeu </label>
     <textarea name="comment" id="" cols="60" rows="8"></textarea>
-    <button type="submit" href="?page=gamePage&id=<?= htmlentities($Game->getId()) ?>"  >Publier</button>
+    <button type="submit" href="?page=gamePage&id=<?= htmlentities($Game->getId()) ?>">Publier</button>
 </form>
 
 <table>
@@ -25,18 +26,20 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <!-- <td>Commenter par:</td> -->
-            <td>commentaires </td>
-            <!-- <td>date du commentaire </td> -->
 
-        </tr>
-        <?php foreach ($tabComment as $comment) : ?>
+        <?php
+         
+         foreach ($tabComment as $com) : ?>
             <tr>
-            <td><?= htmlentities($comment->getComment()) ?></td>
-            <!-- <td><?= htmlentities($comment->getCreatedAt()) ?></td> -->
+                <td><?= htmlentities($com->getComment()) ?></td>
+                <td><?= htmlentities($com->getUserName()) ?></td>
+
             </tr>
+
         <?php endforeach; ?>
+
+
+
 
 
     </tbody>

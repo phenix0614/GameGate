@@ -1,6 +1,6 @@
 <h3>Inscription</h3>
 
-<form method="POST">
+<!-- <form method="POST">
 
     <input type="text" name="firstName" placeholder="votre nom">
     <input type="text" name="lastName" placeholder="votre prenom">
@@ -28,4 +28,26 @@
     <hr />
 
     <input type="submit" value="S'enregistrer" />
-</form>
+</form> -->
+
+<div class="login">
+  <div class="form">
+    <form class="login-form" method="POST">
+    <input type="text" name="firstName" placeholder="votre nom">
+    <input type="text" name="lastName" placeholder="votre prenom">
+    <input type="text" name="email" placeholder="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
+    <input type="password" name="password1" placeholder="Votre mot de passe" required />
+      <input type="password" name="password2" placeholder="Votre mot de passe" required />
+      
+      <select type="text" name="status" id="" placeholder=" votre status">
+        <option value="">choissisez votre statut </option>
+        <option value="Utilisateur">Utilisateur</option>
+        <option value="Createur de contenu">Createur de contenu </option>
+    </select>
+
+
+      <button type="submit" >S'enregistrer</button>
+    </form> 
+
+  </div>
+</div>

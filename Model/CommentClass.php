@@ -61,7 +61,7 @@ class Comment
         return $this->idUserCom;
     }
 
-    public function setGameName(STRING $gameName): void
+    public function setGameName(STRINg $gameName): void
     {
         $this->gameName = $gameName;
     }

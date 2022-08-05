@@ -62,8 +62,10 @@ class GameController
             // $CommentRegister->setCreatedAt($_SESSION['user_id']);
 
             $ComRegister = $comentManager->publish($CommentRegister);
+            unset($_POST['comment']);
         }
-        $tabComment = $comentManager->findAllById($_GET['id']);
+        $rawData = $comentManager->findByGame($_GET['id']);
+        // var_dump($tabComment);
 
 
         $template = './template/gamePage.phtml';

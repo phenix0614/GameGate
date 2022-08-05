@@ -76,10 +76,6 @@ class UserController
                 exit;
             } else {
                 echo "<script>alert(\"Email ou mot de passe invalide\")</script>";
-                // header('Refresh: 1; index.php');
-
-                // exit;
-
 
             }
         }

@@ -1,20 +1,23 @@
+<div class='gamelist'>
+<div>
 <h3>Liste des jeux</h3>
+</div>
 
 <ul>
     <?php foreach ($Games as $Game) : ?>
         <ul>
             <li>
-                <a href="?page=gamePage&id=<?= htmlentities($Game->getId()) ?>">
+                <a class="link text-orange " href="?page=gamePage&id=<?= htmlentities($Game->getId()) ?>">
                     <?= htmlentities($Game->getGameName()) ?>
                 </a>
             </li>
             <br>
-            <li>
+            <li class="text-white" >
                 <?= htmlentities($Game->getContent()) ?>
             </li>
             <br>
 
-            <li>
+            <li class="text-white">
                 <?= htmlentities($Game->getCategory()) ?>
             </li>
 
@@ -22,3 +25,5 @@
         <br><br>
     <?php endforeach; ?>
 </ul>
+
+</div>

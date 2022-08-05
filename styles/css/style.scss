@@ -1,37 +1,300 @@
-#home{
+// *****************************************************HTML *********************************************************************
+
+body {
+
+  background: rgb(13,110,253);
+  background: linear-gradient(5deg, rgba(13,110,253,1) 13%, rgba(15,99,224,1) 30%, rgba(24,40,72,1) 61%);   
+}
+
+
+// ***************************************************** carousel ****************************************************
+$carousel-height: 250px;
+$control-size: 50px;
+
+
+.carousel {
+  width: 80vw;
+  height: $carousel-height;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+
+  &:hover .controls {
+    opacity: 1;
+  }
+
+  .controls {
+    opacity: 0;
     display: flex;
-    flex-direction: column;
-    background-image: url(../image/logo.jpg);
-    background-repeat: round;
-}
-#homeTitle{
+    position: absolute;
+    top: 50%;
+    left: 0;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 99999;
+    transition: all ease 0.5s;
+
+    .control {
+      margin: 0 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.7);
+      opacity: .5;
+      transition: ease .3s;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .slides {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
     display: flex;
-    flex-direction: row;
-    // align-items: center;
-    justify-content: center;
+    width: 100%;
+    transition: 1s ease-in-out all;
+    object-fit: cover;
+
+
+    .slide {
+      min-width: 100%;
+      min-height: $carousel-height;
+      height: auto;
+    }
+  }
 }
 
-h1{
-    size: 400px;
-    color:red;
+
+#home {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  // background-image: url(../image/logo.jpg);
+  
+  background-size: 100%;
+  background-position: center;
+  // background-color: black;
+  background-repeat: no-repeat;
+  align-items: center;
+  gap: 30px;
 }
 
-p{
-    color: white;
-    size: 200px;
+#homeTitle {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  // align-items: center;
+  justify-content: center;
+  padding-left: 0px;
+  margin-right: 91px;
 }
 
-footer{
-    border: 1px solid black;
-    background-color: rgb(224, 219, 219);
+.hometext p  {
+  color: #FFFFFF;
+
+  width: 74%;
+  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF,
+   0 0 20px #181cff, 0 0 30px #F7F9F9, 0 0 40px #4018FF, 0 0 55px #1F18FF, 0 0 75px #ff18e6;
+
 }
+
+
+
+h1 {
+  color: #FFFFFF;
+
+  width: 74%;
+  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF,
+   0 0 20px #181cff, 0 0 30px #F7F9F9, 0 0 40px #4018FF, 0 0 55px #1F18FF, 0 0 75px #ff18e6;
+
+}
+
+
+
+header {
+  height: 56px;
+}
+
+h1 {
+  font-size: 80px;
+  color: white;
+}
+
+p {
+  color: white;
+  size: 200px;
+}
+
+footer {
+  height: 420px;
+  border: 1px solid black;
+  // background-color: #0d6efd;
+}
+
 table,
 td {
-    border: 1px solid #333;
+  border: 1px solid #333;
 }
 
 thead,
 tfoot {
-    background-color: #333;
-    color: #fff;
+  background-color: #333;
+  color: #fff;
+}
+
+h3{
+  display: flex;
+flex-direction: row;
+justify-content: center;
+font-size: xx-large;
+margin-bottom: 0rem;
+margin-top: 0px;
+padding-top: 11px;
+color: white;
+}
+
+
+
+#footcontainer {
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  background: rgb(7, 77, 80);
+  background: linear-gradient(297deg, rgba(7, 77, 80, 1) 0%, rgba(14, 101, 228, 1) 52%);
+  // flex: 1 3;
+}
+
+// #footcontainer h2{
+//   color: white;
+// }
+
+
+
+// #footlogo {
+//   height: 300px;
+//   width: 250px;
+//   margin-left: 50px;
+//   margin-top: 5px;
+// }
+
+#footlogo>span>img {
+  width: 250px;
+  height: 300px;
+  object-fit: cover;
+}
+//  ******************************************************** footer **********************************************************
+
+.container {
+  margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 1rem;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-orange {
+  color: orange;
+}
+
+
+.text-center {
+  text-align: center;
+}
+
+
+.bg-footer {
+  background-color: #182848;
+  font-family: 'Raleway', sans-serif;
+  width: 100%;
+  bottom: 0;
+}
+
+
+
+// ************************************************************* login *********************************************************
+
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+
+  
+  .login {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+  font-family: 'Comfortaa', cursive;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  border-radius: 10px;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+}
+
+.form input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  border-radius: 5px;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: 'Comfortaa', cursive;
+}
+
+.form input:focus {
+  background: #dbdbdb;
+}
+
+.form button {
+  font-family: 'Comfortaa', cursive;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4b6cb7;
+  width: 100%;
+  border: 0;
+  border-radius: 5px;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.form button:active {
+  background: #395591;
+}
+
+.form span {
+  font-size: 75px;
+  color: #4b6cb7;
 }

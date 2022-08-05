@@ -25,10 +25,12 @@ class CommentManager extends AbstractManager
     }
 
 
-    public function findAll(): array
+    public function findByGame($id): array
     {
-        $query = $this->database->prepare('SELECT * FROM gameComent');
-        $query->execute();
+        $query = $this->database->prepare('SELECT comment, lastName,gameName FROM gameComent INNER JOIN users ON gameComent.user_id = users.id INNER JOIN games ON gameComent.game_id = games.id WHERE game_id = :game_id');
+        $query->execute([
+            'game_id'=> $id
+        ]);
 
         $rawData = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -36,71 +38,125 @@ class CommentManager extends AbstractManager
             return [];
         }
 
-        $tabComment = [];
 
-        foreach ($rawData as $rawComment) {
-            $CommentList = new COmment();
 
-            $CommentList->setId($rawComment['id']);
-            // $CommentList->setGameName($rawComment['']);
-            // $CommentList->setidUserCom($rawComment['id']);
-            $CommentList->setComment($rawComment['comment']);
-            // $CommentList->setCreatedAt(
-            //     new DateTime($rawComment['createdAt'])
-            // );
+        // $tabComment = [];
+        
 
-            $tabComment[] = $CommentList;
-        }
-        return $tabComment;
+        // foreach ($rawData as $rawCommen) {
+        //     $CommentList = new Comment();
+
+        //     $CommentList->setId($rawComment['id']);
+        //     $CommentList->setidGameCom($rawComment['game_id']);
+        //     $CommentList->setidUserCom($rawComment['user_id']);
+        //     $CommentList->setComment($rawComment['comment']);
+
+
+        //     // $CommentList->setCreatedAt(
+        //     //     new DateTime($rawComment['createdAt'])
+        //     // );
+
+        //     $tabComment[] = $CommentList;
+            // var_dump($tabComment);
+        // }
+        return $rawData;
     }
 
+    // public function findAll(): array
+    // {
+    //     $query = $this->database->prepare('SELECT * FROM gameComent');
+    //     $query->execute();
 
-    public function findAllById(int $id): ?Comment
-    {
-        $query = $this->database->prepare('SELECT * FROM gameComent WHERE game_id = :game_id');
-        $query->execute([
-            'game_id' => $id
-        ]);
+    //     $rawData = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        $rawData = $query->fetch(PDO::FETCH_ASSOC);
+    //     if ($rawData === false) {
+    //         return [];
+    //     }
 
-        if ($rawData === false) {
-            return null;
-        }
+    //     $tabComment = [];
 
-        var_dump($rawData);
+    //     foreach ($rawData as $rawComment) {
+    //         $CommentList = new COmment();
 
-        $Comment = new Comment();
+    //         $CommentList->setId($rawComment['id']);
+    //         // $CommentList->setGameName($rawComment['']);
+    //         // $CommentList->setidUserCom($rawComment['id']);
+    //         $CommentList->setComment($rawComment['comment']);
+    //         // $CommentList->setCreatedAt(
+    //         //     new DateTime($rawComment['createdAt'])
+    //         // );
+
+    //         $tabComment[] = $CommentList;
+    //     }
+    //     return $tabComment;
+    // }
+
+
+
+//     public function findAllById(int $id): Array
+//     {
+//         $tabComment=[];
+
+//         $queryGameId = $this->database->prepare('SELECT comment FROM gameComent  WHERE game_id = :game_id');
+//         $queryGameId->execute([
+//             'game_id' => $id
+//         ]);
+
+//         $rawData = $queryGameId->fetch(PDO::FETCH_ASSOC);
+
+//         if ($rawData === false) {
+//             return null;
+//         }
+
+//         var_dump($rawData);
+//         foreach ($rawData  as $rawComment) {
+//             $Comment = new Comment();
     
-        $Comment->setId($rawData['id']);
-        $Comment->setcomment($rawData['comment']);
-        // $Comment->setcreatedAt($rawData['createdAt']);
-        $Comment->setidGameCom($rawData['game_id']);
-        $Comment->setidUserCom($rawData['user_id']);
+//             $Comment->setId($rawComment['id']);
+//             $Comment->setcomment($rawComment['comment']);
+//             // $Comment->setcreatedAt($rawComment['createdAt']);
+//             $Comment->setidGameCom($rawComment['game_id']);
+//             $Comment->setidUserCom($rawComment['user_id']);
+                
+//             $tabComment[] = $Comment;
+//             return $tabComment;
+//         }
 
-        $query = $this->database->prepare('SELECT gameName FROM games WHERE id = :id');
-        $query->execute([
-            'id' => $Comment->getidGameCom()
+//         var_dump($tabComment);
 
-        ]);
+//         // $Coment = new Comment();
 
-        $rawGamecom = $query->fetch(PDO::FETCH_ASSOC);
-
-        $Comment-> setGameName($rawGamecom['gameName']);
+        
 
 
-        $query = $this->database->prepare('SELECT lastName FROM users WHERE id = :id');
-        $query->execute([
-            'id' => $Comment->getidUserCom()
+//         // $query = $this->database->prepare('SELECT gameName FROM games WHERE id = :id');
+//         // $query->execute([
+//         //     'id' => $tabComment['game_id']
 
-        ]);
+//         // ]);
 
-        $rawUsercom = $query->fetch(PDO::FETCH_ASSOC);
+//         // $rawGamecom = $query->fetch(PDO::FETCH_ASSOC);
 
-        $Comment-> setUserName($rawUsercom['lastName']);
+//         // $gameName= $Coment-> setGameName($rawGamecom['gameName']);
+//         // $tabComment[]=$gameName;
 
-        return $Comment;
-    }
+
+
+//         // $query = $this->database->prepare('SELECT lastName FROM users WHERE id = :id');
+//         // $query->execute([
+//         //     'id' => $tabComment['user_id']
+
+//         // ]);
+
+//         // $rawUsercom = $query->fetch(PDO::FETCH_ASSOC);
+
+//         // $userName =$Coment-> setUserName($rawUsercom['lastName']);
+        
+//         // $tabComment[]=$userName;
+// // var_dump($Comments);
+
+//         return $tabComment;
+//     }
 
 
 

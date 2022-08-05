@@ -1,19 +1,103 @@
-#home {
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+body {
+  background: #0d6efd;
+  background: linear-gradient(5deg, #0d6efd 13%, #0f63e0 30%, #182848 61%);
+}
+
+.carousel {
+  width: 80vw;
+  height: 250px;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+.carousel:hover .controls {
+  opacity: 1;
+}
+.carousel .controls {
+  opacity: 0;
   display: flex;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 99999;
+  transition: all ease 0.5s;
+}
+.carousel .controls .control {
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  opacity: 0.5;
+  transition: ease 0.3s;
+  cursor: pointer;
+}
+.carousel .controls .control:hover {
+  opacity: 1;
+}
+.carousel .slides {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  width: 100%;
+  transition: 1s ease-in-out all;
+  object-fit: cover;
+}
+.carousel .slides .slide {
+  min-width: 100%;
+  min-height: 250px;
+  height: auto;
+}
+
+#home {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
   flex-direction: column;
-  background-image: url(../image/logo.jpg);
-  background-repeat: round;
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  align-items: center;
+  gap: 30px;
 }
 
 #homeTitle {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
+  padding-left: 0px;
+  margin-right: 91px;
+}
+
+.hometext p {
+  color: #FFFFFF;
+  width: 74%;
+  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #181cff, 0 0 30px #F7F9F9, 0 0 40px #4018FF, 0 0 55px #1F18FF, 0 0 75px #ff18e6;
 }
 
 h1 {
-  size: 400px;
-  color: red;
+  color: #FFFFFF;
+  width: 74%;
+  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #181cff, 0 0 30px #F7F9F9, 0 0 40px #4018FF, 0 0 55px #1F18FF, 0 0 75px #ff18e6;
+}
+
+header {
+  height: 56px;
+}
+
+h1 {
+  font-size: 80px;
+  color: white;
 }
 
 p {
@@ -22,8 +106,8 @@ p {
 }
 
 footer {
+  height: 420px;
   border: 1px solid black;
-  background-color: #e0dbdb;
 }
 
 table,
@@ -35,6 +119,127 @@ thead,
 tfoot {
   background-color: #333;
   color: #fff;
+}
+
+h3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: xx-large;
+  margin-bottom: 0rem;
+  margin-top: 0px;
+  padding-top: 11px;
+  color: white;
+}
+
+#footcontainer {
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  background: #074d50;
+  background: linear-gradient(297deg, #074d50 0%, #0e65e4 52%);
+}
+
+#footlogo > span > img {
+  width: 250px;
+  height: 300px;
+  object-fit: cover;
+}
+
+.container {
+  margin-top: 2em;
+  display: flex;
+  justify-content: space-between;
+}
+
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 1rem;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-orange {
+  color: orange;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bg-footer {
+  background-color: #182848;
+  font-family: "Raleway", sans-serif;
+  width: 100%;
+  bottom: 0;
+}
+
+.login {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+  font-family: "Comfortaa", cursive;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  border-radius: 10px;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+}
+
+.form input {
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  border-radius: 5px;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: "Comfortaa", cursive;
+}
+
+.form input:focus {
+  background: #dbdbdb;
+}
+
+.form button {
+  font-family: "Comfortaa", cursive;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4b6cb7;
+  width: 100%;
+  border: 0;
+  border-radius: 5px;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+
+.form button:active {
+  background: #395591;
+}
+
+.form span {
+  font-size: 75px;
+  color: #4b6cb7;
 }
 
 /*# sourceMappingURL=style.css.map */

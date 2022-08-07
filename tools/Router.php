@@ -3,19 +3,27 @@
 class Router
 {
     private array $authorizedPages = [
-        'homePage', 'userPage',
+
+        'homePage', 'userPage', 'personalUpDate',
         'login', 'gameList',
         'register', 'logout',
-        'gameAdd', 'gamePage'
+        'gameAdd', 'gamePage', 'adminPage'
     ];
 
     public function Way(): void
     {
-        $page = 'homePage';
+        $page =  $_GET['page'] ?? 'homePage';
 
-        if (isset($_GET['page']) && in_array($_GET['page'], $this->authorizedPages)) {
-            $page = $_GET['page'];
+        if (isset($_GET['page']) && !in_array($_GET['page'], $this->authorizedPages)) {
+
+            unset($page);
+            $template = './template/404.phtml';
+            require './view/layout.phtml';
+            exit;
         }
+
+
+
 
         switch ($page) {
 
@@ -66,6 +74,18 @@ class Router
                 require './Controller/UserController.php';
                 $controller = new UserController();
                 $controller->viewUserPage();
+                break;
+
+            case 'adminPage':
+                require './Controller/UserController.php';
+                $controller = new UserController();
+                $controller->viewAdminPage();
+                break;
+
+            case 'personalUpDate':
+                require './Controller/UserController.php';
+                $controller = new UserController();
+                $controller->viewUpDatePage();
                 break;
         }
     }

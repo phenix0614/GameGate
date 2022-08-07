@@ -1,9 +1,9 @@
 <?php
 
-// require_once 'src/Model/User.php';
 require_once './Model/AbstractManager.php';
 
 class UserManager extends AbstractManager
+
 {
     public function findById(int $id): ?Users
     {
@@ -30,6 +30,23 @@ class UserManager extends AbstractManager
     }
 
 
+
+    public function findAll(): array
+    {
+        $query = $this->database->prepare('SELECT * FROM users');
+        $query->execute();
+
+        $rawData = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        if ($rawData === false) {
+            return null;
+        } else {
+            return $rawData;
+        }
+    }
+
+
+
     public function findByEmail(string $email): ?Users
     {
         $query = $this->database->prepare('SELECT * FROM users WHERE email = :email');
@@ -54,29 +71,25 @@ class UserManager extends AbstractManager
         return $User;
     }
 
+
+
     public function insert(Users $User): Users
     {
         $query = $this->database->prepare('
             INSERT INTO users(firstName, lastName, email, password, status)
             VALUES (:firstName, :lastName, :email, :password, :status)
         ');
-        // var_dump($User->getCreatedAt());
-        // date_default_timezone_set('Europe/Paris');
-
-
-        // $date= new DateTime();
-
 
         $query->execute([
             'firstName' => $User->getFirstName(),
             'lastName' => $User->getLastName(),
             'email' => $User->getEmail(),
-            // 'createdAt'=> $User->getCreatedAt(),
             'password' => $User->getPassword(),
             'status' =>  $User->getUserStatus()
         ]);
         return $User;
     }
+
 
     public function emailVerify(string $email): Bool
     {
@@ -92,5 +105,29 @@ class UserManager extends AbstractManager
         } else {
             return FALSE;
         }
+    }
+
+
+
+    public  function delete(int $id): void
+    {
+        $query = $this->database->prepare('DELETE FROM users WHERE id = :id');
+        $query->execute([
+            'id' => $id
+        ]);
+    }
+
+
+
+    public function upDateUser(Users $user): void
+    {
+        $query = $this->database->prepare('UPDATE users SET firstName = :firstName, lastName = :lastName, email= :email WHERE id = :id');
+
+        $query->execute([
+            'id' => $user->getId(),
+            'firstName' => $user->getFirstName(),
+            'lastName' => $user->getLastName(),
+            'email' => $user->getEmail(),
+        ]);
     }
 }

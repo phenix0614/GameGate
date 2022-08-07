@@ -1,5 +1,5 @@
 const main =()=> {
-    const delay = 3000; //ms
+    const delay = 3000;
 
 const slides = document.querySelector(".slides");
 const slidesCount = slides.childElementCount;
@@ -23,7 +23,7 @@ const restart = function() {
   autoChange = setInterval(changeSlide, delay);
 };
 
-// Controls
+
 document.querySelector(".next-slide").addEventListener("click", function() {
   changeSlide();
   restart();
@@ -33,6 +33,8 @@ document.querySelector(".prev-slide").addEventListener("click", function() {
   changeSlide(false);
   restart();
 });
+
+
 
 
 }

@@ -7,7 +7,6 @@ class GameController
 {
 
     public function viewGameList(): void
-
     {
 
         $manager = new GameManager();
@@ -16,8 +15,9 @@ class GameController
         require 'view/layout.phtml';
     }
 
-    public function viewGameAdd(): void
 
+
+    public function viewGameAdd(): void
     {
 
         if (isset($_POST['gameName']) && isset($_POST['link']) && isset($_POST['content']) && isset($_POST['category'])) {
@@ -44,8 +44,8 @@ class GameController
         require 'view/layout.phtml';
     }
 
-    public function viewGamePage(): void
 
+    public function viewGamePage(): void
     {
 
         $manager = new GameManager();
@@ -55,17 +55,14 @@ class GameController
 
         if (isset($_POST['comment'])) {
             $CommentRegister = new Comment();
-            // $CommentRegister->setId($_GET['id']);
             $CommentRegister->setComment($_POST['comment']);
             $CommentRegister->setidGameCom($_GET['id']);
             $CommentRegister->setidUserCom($_SESSION['user_id']);
-            // $CommentRegister->setCreatedAt($_SESSION['user_id']);
 
-            $ComRegister = $comentManager->publish($CommentRegister);
-            unset($_POST['comment']);
+            $comentManager->publish($CommentRegister);
+            header('Location: /index.php?page=gamePage&id=' . $_GET['id']);
         }
         $rawData = $comentManager->findByGame($_GET['id']);
-        // var_dump($tabComment);
 
 
         $template = './template/gamePage.phtml';

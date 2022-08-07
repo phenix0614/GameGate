@@ -1,0 +1,37 @@
+<h3 class="lightWord" > Page admin</h3>
+
+<div class="adminPage">
+
+    <table class="userTbl">
+        <thead>
+            <tr>
+                <td>Noms</td>
+                <td>Prénoms</td>
+                <td>Email</td>
+                <td>Statut</td>
+                <td>Supprimer</td>
+
+            </tr>
+        </thead>
+        <tbody>
+            <form action="" method="POST">
+
+            <?php foreach ($UserList as $user) : ?>
+                <tr>
+                    <td><?= htmlentities($user['firstName']) ?></td>
+                    <td><?= htmlentities($user['lastName']) ?></td>
+                    <td><?= htmlentities($user['email']) ?></td>
+                    <td><?= htmlentities($user['status']) ?></td>
+                    <td>
+                        <button type="submit" name="delete" value="<?= htmlentities($user['id']) ?>"> Supprimer </button>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+
+            </form>
+
+        </tbody>
+    </table>
+
+
+</div>

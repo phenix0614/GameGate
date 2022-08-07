@@ -9,7 +9,6 @@ class Users
     private string $email;
     private string $password;
     private ?string $ctrPassword;
-    // private DateTime $createdAt;
     private string $userStatus;
 
     public function setId(INT $id): VOID
@@ -72,16 +71,6 @@ class Users
         return $this->ctrPassword;
     }
 
-
-
-    // public function  setCreatedAt(dateTime $createdAt): void
-    // {
-    //     $this->createdAt = $createdAt;
-    // }
-    // public function getCreatedAt(): DateTime
-    // {
-    //     return $this->createdAt;
-    // }
 
     public function setUserStatus($userStatus): void
     {

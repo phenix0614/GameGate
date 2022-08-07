@@ -1,61 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+.Comfortaa {
+  font-family: "comfortaa";
+}
+
 body {
   background: #0d6efd;
   background: linear-gradient(5deg, #0d6efd 13%, #0f63e0 30%, #182848 61%);
 }
 
-.carousel {
-  width: 80vw;
-  height: 250px;
-  border-radius: 3px;
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-}
-.carousel:hover .controls {
-  opacity: 1;
-}
-.carousel .controls {
-  opacity: 0;
+.userPage {
   display: flex;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  justify-content: space-between;
-  width: 100%;
-  z-index: 99999;
-  transition: all ease 0.5s;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
-.carousel .controls .control {
-  margin: 0 5px;
+
+.adminPage {
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.7);
-  opacity: 0.5;
-  transition: ease 0.3s;
-  cursor: pointer;
 }
-.carousel .controls .control:hover {
-  opacity: 1;
-}
-.carousel .slides {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  display: flex;
-  width: 100%;
-  transition: 1s ease-in-out all;
-  object-fit: cover;
-}
-.carousel .slides .slide {
-  min-width: 100%;
-  min-height: 250px;
-  height: auto;
+
+.white-link {
+  text-decoration: none;
+  color: white;
 }
 
 #home {
@@ -79,14 +45,26 @@ body {
   margin-right: 91px;
 }
 
+.hometext {
+  display: flex;
+  justify-content: center;
+}
+
 .hometext p {
   color: #FFFFFF;
   width: 74%;
   text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #181cff, 0 0 30px #F7F9F9, 0 0 40px #4018FF, 0 0 55px #1F18FF, 0 0 75px #ff18e6;
 }
 
+.lightWord, .texte-404 {
+  font-family: "Comfortaa", cursive;
+  text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #181cff, 0 0 30px #F7F9F9, 0 0 40px #4018FF, 0 0 55px #1F18FF, 0 0 75px #ff18e6;
+}
+
 h1 {
   color: #FFFFFF;
+  font-size: 80px;
+  font-family: "Comfortaa", cursive;
   width: 74%;
   text-shadow: 0 0 5px #FFF, 0 0 10px #FFF, 0 0 15px #FFF, 0 0 20px #181cff, 0 0 30px #F7F9F9, 0 0 40px #4018FF, 0 0 55px #1F18FF, 0 0 75px #ff18e6;
 }
@@ -95,14 +73,10 @@ header {
   height: 56px;
 }
 
-h1 {
-  font-size: 80px;
-  color: white;
-}
-
 p {
   color: white;
   size: 200px;
+  font-family: "Comfortaa", cursive;
 }
 
 footer {
@@ -163,7 +137,7 @@ h6 {
   font-size: 1rem;
 }
 
-.text-white {
+.text-white, .texte-404 {
   color: #fff;
 }
 
@@ -182,7 +156,10 @@ h6 {
   bottom: 0;
 }
 
-.login {
+.login,
+.addGame,
+.userPage,
+.upDatePage {
   width: 360px;
   padding: 8% 0 0;
   margin: auto;
@@ -240,6 +217,160 @@ h6 {
 .form span {
   font-size: 75px;
   color: #4b6cb7;
+}
+
+.userTbl {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  background-color: white;
+}
+
+.gamePageContainer .carouselContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.gamePageContainer .carouselContainer .carousel {
+  display: flex;
+  justify-content: center;
+  width: 80vw;
+  height: 250px;
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+.gamePageContainer .carouselContainer .carousel:hover .controls {
+  opacity: 1;
+}
+.gamePageContainer .carouselContainer .carousel .controls {
+  opacity: 0;
+  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  justify-content: space-between;
+  width: 100%;
+  z-index: 99999;
+  transition: all ease 0.5s;
+}
+.gamePageContainer .carouselContainer .carousel .controls .control {
+  margin: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  opacity: 0.5;
+  transition: ease 0.3s;
+  cursor: pointer;
+}
+.gamePageContainer .carouselContainer .carousel .controls .control:hover {
+  opacity: 1;
+}
+.gamePageContainer .carouselContainer .carousel .slides {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  width: 100%;
+  transition: 1s ease-in-out all;
+  object-fit: cover;
+}
+.gamePageContainer .carouselContainer .carousel .slides .slide {
+  min-width: 100%;
+  min-height: 250px;
+  height: auto;
+}
+.gamePageContainer .carouselContainer .carousel .slides .slide {
+  width: 890px;
+  height: 250px;
+  object-fit: cover;
+}
+.gamePageContainer .noteContainer h3 {
+  font-size: 70px;
+  color: orange;
+}
+.gamePageContainer .noteContainer .note1,
+.gamePageContainer .noteContainer .note2 {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.gamePageContainer .noteContainer .note1 p {
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+}
+.gamePageContainer .noteContainer .note2 p {
+  width: 80%;
+  font-family: "Comfortaa", cursive;
+}
+.gamePageContainer .bouton {
+  margin-left: 710px;
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+.gamePageContainer .bouton:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+.gamePageContainer .bouton a {
+  color: orange;
+}
+.gamePageContainer .commentContainer {
+  margin-top: 50px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gamePageContainer .commentContainer .commentForm {
+  margin-bottom: 30px;
+}
+.gamePageContainer table {
+  background-color: white;
+}
+
+.page-404 {
+  height: 500px;
+}
+.page-404 h1 {
+  text-align: -moz-left;
+  display: flex;
+  justify-content: center;
+  margin-left: 157px;
+  margin-top: 98px;
+}
+.page-404 a {
+  color: purple;
+}
+.page-404 .container404, .page-404 .texte-404 {
+  display: flex;
+  justify-content: center;
+}
+.page-404 .title-404 {
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */

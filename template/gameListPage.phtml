@@ -1,29 +1,28 @@
+<h3 class="lightWord">Liste des jeux</h3>
+
+
 <div class='gamelist'>
-<div>
-<h3>Liste des jeux</h3>
-</div>
 
-<ul>
-    <?php foreach ($Games as $Game) : ?>
-        <ul>
-            <li>
-                <a class="link text-orange " href="?page=gamePage&id=<?= htmlentities($Game->getId()) ?>">
-                    <?= htmlentities($Game->getGameName()) ?>
-                </a>
-            </li>
-            <br>
-            <li class="text-white" >
-                <?= htmlentities($Game->getContent()) ?>
-            </li>
-            <br>
+    <ul>
+        <?php foreach ($Games as $Game) : ?>
+            <ul>
+                <li>
+                    <a class="link text-orange " href="?page=gamePage&id=<?= htmlentities($Game->getId()) ?>">
+                        <?= htmlentities($Game->getGameName()) ?>
+                    </a>
+                </li>
+                <br>
+                <li class="text-white Comfortaa">
+                    <?= htmlentities($Game->getContent()) ?>
+                </li>
+                <br>
+                <li class="text-white Comfortaa">
+                    <?= htmlentities($Game->getCategory()) ?>
+                </li>
 
-            <li class="text-white">
-                <?= htmlentities($Game->getCategory()) ?>
-            </li>
-
-        </ul>
-        <br><br>
-    <?php endforeach; ?>
-</ul>
+            </ul>
+            <br><br>
+        <?php endforeach; ?>
+    </ul>
 
 </div>

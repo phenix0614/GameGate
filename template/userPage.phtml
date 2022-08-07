@@ -1,13 +1,22 @@
-<h3> <?= $User->getLastName() ?></h3>
-
-<ul>
-    <li>
-    <?= $User->getEmail() ?>
-    </li>
-
-    <li>
-    <?= $User->getUserStatus() ?>
-    </li>
+<h3 class="lightWord"> COMPTE </h3>
 
 
-</ul>
+
+<div class="userPage">
+    <div class="form">
+
+        <form class="userPage-form" method="POST">
+            <input type="text" name="firstName" value="<?= $User->getFirstName() ?>">
+            <input type="text" name="lastName" value="<?= $User->getLastName() ?>">
+            <input type="text" name="email" value="<?= $User->getEmail() ?>">
+            <button type="submit"><a class="white-link" href="?page=personalUpDate&id=<?= $User->getId() ?>">Modifier</a></button>
+        </form>
+        <br>
+        <?php
+
+        if ($_SESSION['user_status'] === 'admin') : ?>
+            <button type="submit"> <a class="white-link" href="?page=adminPage">Liste des utilisateurs</a> </button> <br>
+        <?php endif; ?>
+
+    </div>
+</div>

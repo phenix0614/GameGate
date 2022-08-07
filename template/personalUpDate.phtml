@@ -1,0 +1,22 @@
+<h3 class="lightWord"> Modifier vos données</h3>
+
+
+
+<div class="upDatePage">
+    <div class="form">
+
+        <form class="upDatePage-form" method="POST">
+            <input type="text" name="firstName" placeholder="Nom">
+            <input type="text" name="lastName" placeholder="Prenom">
+            <input type="text" name="email" placeholder="Email">
+            <button type="submit" name="modify">Enregistrer les modifications</button> <br>
+
+        </form>
+        <?php
+
+        if ($_SESSION['user_status'] === 'admin') : ?>
+            <button type="submit"> <a class="white-link" href="?page=adminPage">Liste des utilisateur</a> </button> <br>
+        <?php endif; ?>
+
+    </div>
+</div>

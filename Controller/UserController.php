@@ -7,10 +7,11 @@ require_once './tools/Authentificator.php';
 class UserController
 
 {
+
+
     public function register(): void
     {
 
-        $success = 'Votre profile a bien été creer';
         $Manager = new UserManager();
 
         if (
@@ -57,9 +58,10 @@ class UserController
         }
 
         $template = './template/registerPage.phtml';
-
         require './view/layout.phtml';
     }
+
+
 
     public function login(): void
     {
@@ -76,7 +78,6 @@ class UserController
                 exit;
             } else {
                 echo "<script>alert(\"Email ou mot de passe invalide\")</script>";
-
             }
         }
 
@@ -84,6 +85,8 @@ class UserController
 
         require './view/layout.phtml';
     }
+
+
 
     public function logout(): void
     {
@@ -93,14 +96,54 @@ class UserController
         exit;
     }
 
+
+
     public function viewUserPage(): void
     {
         $Manager = new UserManager();
         $User = $Manager->findById($_SESSION['user_id']);
-
-
         $template = './template/userPage.phtml';
-
         require './view/layout.phtml';
+    }
+
+
+
+    public function viewAdminPage(): void
+    {
+        $list = new UserManager();
+        $UserList = $list->findAll();
+        $template = './template/adminPage.phtml';
+        require './view/layout.phtml';
+        var_dump($_POST);
+        if (isset($_POST['delete'])) {
+
+            $list->delete(intval($_POST['delete']));
+            echo "<script>alert(\"Utilisateur supprimé\")</script>";
+            header('Location: /index.php?page=adminPage&id=' . $_GET['id']);
+        }
+    }
+
+
+
+    public function viewUpDatePage(): void
+    {
+        $manager = new UserManager();
+        $User = $manager->findById($_SESSION['user_id']);
+
+        $template = './template/personalUpDate.phtml';
+        require './view/layout.phtml';
+
+        if (isset($_POST['modify'])) {
+            $Modify_user = new Users;
+            $Modify_user->setId($_SESSION['user_id']);
+            $Modify_user->setFirstName($_POST['firstName']);
+            $Modify_user->setLastName($_POST['lastName']);
+            $Modify_user->setEmail($_POST['email']);
+
+
+            $manager->upDateUser($Modify_user);
+            echo "<script>alert(\"Vos données ont été modifier\")</script>";
+            header('Location: /index.php?page=userPage&id=' . $_GET['id']);
+        }
     }
 }

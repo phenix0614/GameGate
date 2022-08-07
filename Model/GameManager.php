@@ -22,13 +22,8 @@ class GameManager extends AbstractManager
         $Game->setId($rawData['id']);
         $Game->setGameName($rawData['gameName']);
         $Game->setContent($rawData['content']);
-        // $Game->setAddAt($rawData['AddAt']);
         $Game->setLink($rawData['link']);
         $Game->setCategory($rawData['category']);
-        // $Game->setAddAt(
-        //     new DateTime($rawData['createdAt'])
-        // );
-
         return $Game;
     }
 
@@ -73,10 +68,9 @@ class GameManager extends AbstractManager
         ');
 
         $query->execute([
-            'gameName'=> $Game->getGameName(),
-            'link'=> $Game->getLink(),
-            // 'createdAt'=> $Game->getAddAt(),
-            'content'=> $Game->getContent(),
+            'gameName' => $Game->getGameName(),
+            'link' => $Game->getLink(),
+            'content' => $Game->getContent(),
             'category' => $Game->getCategory()
         ]);
 
@@ -96,11 +90,10 @@ class GameManager extends AbstractManager
         $query = $this->Bdd->prepare('UPDATE games SET gameName= :gameName, link= :link, content= :content , category :category WHERE id = :id');
 
         $query->execute([
-            'gameName'=> $Game->getGameName(),
-            'link'=> $Game->getLink(),
-            'content'=> $Game->getContent(),
+            'gameName' => $Game->getGameName(),
+            'link' => $Game->getLink(),
+            'content' => $Game->getContent(),
             'category' => $Game->getCategory()
         ]);
     }
-
 }

@@ -1,5 +1,5 @@
 <?php
-require 'Tools/Router.php';
+require 'tools/Router.php';
 require_once './tools/Authentificator.php';
 require './Model/UserClass.php';
 

@@ -6,10 +6,10 @@
     <div class="form">
 
         <form class="userPage-form" method="POST">
-            <input type="text" name="firstName" value="<?= $User->getFirstName() ?>">
-            <input type="text" name="lastName" value="<?= $User->getLastName() ?>">
-            <input type="text" name="email" value="<?= $User->getEmail() ?>">
-            <button type="submit"><a class="white-link" href="?page=personalUpDate&id=<?= $User->getId() ?>">Modifier</a></button>
+            <input type="text" name="firstName" value="<?= htmlentities($User->getFirstName()) ?>">
+            <input type="text" name="lastName" value="<?= htmlentities($User->getLastName()) ?>">
+            <input type="text" name="email" value="<?= htmlentities($User->getEmail()) ?>">
+            <button type="submit"><a class="white-link" href="?page=personalUpDate&id=<?= htmlentities($User->getId()) ?>">Modifier</a></button>
         </form>
         <br>
         <?php

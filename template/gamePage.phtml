@@ -18,15 +18,15 @@
 
     <div class="noteContainer">
 
-        <h3><?= $Game->getGameName() ?></h3>
+        <h3><?= htmlentities($Game->getGameName()) ?></h3>
 
         <div class="note1">
-            <p> <?= $Game->getCategory() ?>
+            <p> <?= htmlentities($Game->getCategory())?>
             </p>
         </div>
 
         <div class="note2">
-            <p> <?= $Game->getContent() ?>
+            <p> <?= htmlentities($Game->getContent()) ?>
             </p>
         </div>
 
